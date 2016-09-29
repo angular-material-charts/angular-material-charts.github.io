@@ -1,0 +1,39 @@
+<div class="margin-tb-2 padding-tb-3 padding-lr-2 single-product-page page" layout="column" layout-wrap md-whiteframe="5" ng-controller="CartController as cc">
+    <h2>Cart</h2>
+
+    <!-- <div layout="column" class="margin-top-2 items-table" layout-wrap >
+        <div layout="row" class="table-header" layout-wrap>
+            <div flex-gt-xs="70" layout="row" layout-align="start center">
+                <h4>Items</h4>
+                <ng-md-icon icon="arrow_downward" size="14"></ng-md-icon>
+            </div>
+            <div flex-gt-xs="15" class="text-right padding-right-1">
+                <h4>Quantity</h4>
+            </div>
+            <div flex-gt-xs="15" class="text-right padding-right-1">
+                <h4>Subtotal</h4>
+            </div>
+
+        </div>
+    </div> -->
+    <div layout="column" class="margin-top-2" layout-wrap>
+        <cart-product-card md-whiteframe="3" product="cc.product1"></cart-product-card>
+
+        <div class="additional details">
+
+        </div>
+
+        <div layout="column" layout-align="center center" class="margin-top-2 action-buttons" layout-wrap>
+            <md-button class="md-raised md-primary md-hue-2" ng-disabled="false" aria-label="description">
+                <div class="padding-tb-1 padding-lr-2" layout="row" layout-align="center center">
+                    <ng-md-icon icon="exit_to_app" size="20" style="fill:white"></ng-md-icon>
+                    <p><b> Place Order </b></p>
+                </div>
+            </md-button>
+        </div>
+    </div>
+
+
+
+
+</div>

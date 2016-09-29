@@ -1,0 +1,27 @@
+{
+    "products" : [
+        {
+            "id" : 1,
+            "name" : "Tag Huer Basarati Black Widow",
+            "features" : [
+                {
+                    "name" :"Belt",
+                    "value" : "metal"
+                },
+                {
+                    "name" : "Color",
+                    "value" : "black"
+                }
+            ],
+            "cost" : 1400,
+            "outOfStock" : false,
+            "category" : "watches",
+            "subCategory" : "tag_huer",
+            "quantity" : 10,
+            "createdAt" : "24",
+            "updatedAt" : "25",
+            "thumbnailPath" : "/assets/images/dummy/1.jpg",
+            "imagePath" : "/assets/images/dummy/im1.jpg"
+        }
+    ]
+}

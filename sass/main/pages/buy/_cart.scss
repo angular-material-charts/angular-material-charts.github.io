@@ -1,0 +1,76 @@
+.items-table{
+    .table-header{
+        color: $blue-grey-700;
+        fill: $blue-grey-700;
+
+        border-bottom: 1px solid $blue-grey-500;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        ng-md-icon{
+            margin-left: 8px;
+            padding-top: 4px;
+        }
+
+        &>div{
+            border-left: 1px solid $blue-grey-500;
+        }
+
+        &>div:first-child{
+            border-color: transparent;
+        }
+    }
+}
+
+.cart-product-card{
+    // background: lighten($blue-900, 55%);
+    border: 1px solid $blue-grey-300;
+    // background: lighten($teal-50, 9%);
+    background: darken(#fff,3%);
+    color: $grey-800;
+
+    a{
+        color: $grey-700;
+        text-decoration: none;
+    }
+
+    a:hover{
+        color: $grey-900;
+        text-decoration: underline;
+    }
+
+
+    h3{
+        color: $blue-grey-800;
+    }
+
+    .sub-total{
+        h4{
+            font-size: 16px;
+        }
+    }
+
+    .thumb-image{
+        // min-width: 80px;
+        // min-height: (80px*360/300);
+
+        height: (50px*360/300);
+        width: 50px;
+        overflow: hidden;
+        border: 1px solid $blue-grey-300;
+        @media screen and (min-width: 600px){
+            width: 120px;
+            height: (120px*360/300);
+        }
+
+        // img{
+        //
+        // }
+    }
+
+    .action-buttons{
+        .md-button{
+            padding: 10px;
+        }
+
+    }
+}

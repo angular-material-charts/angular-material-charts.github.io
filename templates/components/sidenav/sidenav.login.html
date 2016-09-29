@@ -1,0 +1,27 @@
+<div layout="column" class="margin-top-3 padding-1" layout-align="start none">
+
+    <form name="loginForm" layout="column" layout-align="start none">
+        <md-input-container>
+            <label>Email</label>
+            <input required name="email" type="email" ng-model="oc.login.user.email">
+            <div ng-messages="loginForm.email.$error">
+                <div ng-message="required">This is required.</div>
+                <div ng-message="email">Invalid e-mail address.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container>
+            <label>Password</label>
+            <input required minlength="6" name="password" type="password" ng-model="oc.login.user.password">
+            <div ng-messages="loginForm.password.$error">
+                <div ng-message="required">This is required.</div>
+                <div ng-message="minlength">Password must be atleast 6 characters long.</div>
+            </div>
+        </md-input-container>
+
+        <md-button ng-disabled="loginForm.$invalid" ng-click="oc.loginUser()" class="md-raised md-primary md-hue-3" aria-label="description">
+            <b>Login</b>
+        </md-button>
+    </form>
+
+</div>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<div layout="row" class="main-container" ng-controller="InappController as ic">
+
+    <div flex layout="column">
+        <md-toolbar md-scroll-shrink ng-if="true" class="al-header" md-whiteframe="3">
+            <div ng-include src="'/templates/components/header.html'"></div>
+        </md-toolbar>
+        <div layout="row" flex>
+            <md-sidenav flex-xs="80" flex-gt-xs="20" class="al-sidenav" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-disable-backdrop md-whiteframe="2">
+                <div ng-include src="'/templates/components/sidenav.html'"></div>
+            </md-sidenav>
+            <md-content flex class="al-main-content">
+                <div id="preloader-container" ng-include src="'/templates/components/preloader.html'" ng-show="pageTransition">
+                </div>
+                <ui-view ng-show="!pageTransition"></ui-view>
+            </md-content>
+        </div>
+    </div>
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+        <div ng-include src="'/templates/components/sidenav/sidenav.notifications.html'"></div>
+    </md-sidenav>
+</div>

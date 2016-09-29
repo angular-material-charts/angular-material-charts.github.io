@@ -1,0 +1,19 @@
+<div class="al-options margin-top-5" layout="column">
+    <div ng-repeat="category in sdc.categories" layout="column">
+        <md-button
+            class=" margin-0 padding-1 padding-left-2 text-capitalize"
+            ng-class="{'al-option-selected':category.selected}"
+            ng-click="sdc.optionSelected($index,sdc.categories)"
+            ui-sref=".products({category : category.name, subCategory : ''})">
+            {{category.name|replaceUnderscore}}
+        </md-button>
+        <div class="al-suboptions panel-animation" ng-show="category.selected"
+        ng-repeat="subCategory in category.subCategories" layout="column">
+            <md-button class="margin-0 padding-left-4 text-capitalize"
+            ui-sref-active="al-subOption-selected"
+            ui-sref=".products({category: category.name , subCategory : subCategory})">
+                {{subCategory|replaceUnderscore}}
+            </md-button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+.single-product-card{
+    padding : 5px;
+
+    .md-button{
+        line-height: 0;
+        min-height: 24px;
+        min-width: 50px;
+        padding: 3px 10px;
+    }
+
+    .thumb-image{
+        min-width: 240px;
+        min-height: (360px*240/300);
+        border: 1px solid $blue-grey-600;
+    }
+
+    .font-16{
+        font-size: 14px;
+    }
+
+    .details{
+        p{
+            line-height: normal;
+        }
+
+        .link-details{
+            height: 24px;
+        }
+    }
+
+    @media screen and (min-width: 600px){
+        padding: 20px;
+
+        .thumb-image{
+            width: 300px;
+            height: 360px;
+        }
+
+        .font-16{
+            font-size: 16px;
+        }
+
+        .md-button{
+            margin:8px;
+            margin-right: 40px;
+        }
+    }
+
+}

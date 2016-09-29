@@ -1,0 +1,53 @@
+<div class="margin-top-1 padding-1">
+        <form name="registerForm" layout="column" layout-align="start none">
+            <md-input-container>
+                <label>Full Name</label>
+                <input type="text" name="fullname" md-maxlength="50" required ng-model="oc.register.user.name">
+                <div ng-messages="registerForm.fullname.$error">
+                    <div ng-message="required">This is required.</div>
+                    <div ng-message="md-maxlength">The name has to be less than 50 characters long.</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Email Id</label>
+                <input required name="email" type="email" ng-model="oc.register.user.email">
+                <div ng-messages="registerForm.email.$error" >
+                    <div ng-message="required">This is required.</div>
+                    <div ng-message="email">Invalid e-mail address.</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Mobile Number</label>
+                <input required name="mobileno" type="text" ng-pattern="/^[0-9]{10,10}$/" ng-model="oc.register.user.mobileno">
+                <div ng-messages="registerForm.mobileno.$error" >
+                    <div ng-message="required">This is required.</div>
+                    <div ng-message="pattern">Invalid mobile number.</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Password</label>
+                <input required minlength="6" type="password" name="password" ng-model="oc.register.user.password">
+                <div ng-messages="registerForm.password.$error">
+                    <div ng-message="required">This is required.</div>
+                    <div ng-message="minlength">Password must be atleast 6 characters long.</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Confirm Password</label>
+                <input type="password" required minlength="6" match="oc.register.user.password" name="confirmPassword" ng-model="oc.register.user.confirmpwd">
+                <div ng-messages="registerForm.confirmPassword.$error">
+                    <div ng-message="required">This is required.</div>
+                    <div ng-message="minlength">Password must be atleast 6 characters long.</div>
+                    <div ng-message="match">Passwords must match</div>
+                </div>
+            </md-input-container>
+
+            <md-button ng-disabled="registerForm.$invalid" ng-click="oc.registerUser()" class="md-raised md-primary md-hue-3" aria-label="description">
+                <b>Register</b>
+            </md-button>
+        </form>
+</div>

@@ -1,0 +1,86 @@
+.al-header{
+
+    @media screen and (min-width: 600px){
+        padding-left: 20px;
+        padding-right: 20px;
+
+        .md-button{
+            padding-left: 6px;
+            padding-right: 6px;
+
+            margin-left:8px;
+            margin-right: 8px;
+
+            ng-md-icon{
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .al-option-selected{
+            // background: rgba(150,150,150,0.1);
+            // border-bottom: 4px solid $primary;
+        color: $primary !important;
+        ng-md-icon{
+            fill : $primary;
+        }
+    }
+    .md-button{
+        line-height: 12px;
+        min-width: 20px;
+        letter-spacing: 1.3px;
+    }
+
+    .md-button.search-button{
+        min-width: 20px;
+    }
+
+    .md-input{
+        display: block;
+        margin-top: 0;
+        background: none;
+        padding-top: 2px;
+        padding-bottom: 1px;
+        padding-left: 2px;
+        padding-right: 2px;
+        border-width: 0 0 1px 0;
+        line-height: 20px;
+        height: 20px;
+        -ms-flex-preferred-size: 20px;
+        font-size: 14px;
+        border-radius: 0;
+        border-style: solid;
+        width: 100%;
+        box-sizing: border-box;
+        float: left
+    }
+
+    .search-button.md-button:not([disabled]):hover{
+        background-color : rgba(158,158,158,0.045);
+    }
+
+    .close-icon{
+        max-width: 18px;
+    }
+}
+
+.al-header-out{
+
+    .md-button{
+        min-height: 24px;
+        height: 36px;
+        line-height: 32px;
+    }
+
+    .al-border-button{
+        border-radius: 20px !important;
+        border: 1px solid $al-border-button-color;
+        color: $al-border-button-color !important;
+        transition: 1000;
+    }
+
+    button.al-border-button:hover{
+        background-color: $al-border-button-color;
+        color : $white !important;
+    }
+}

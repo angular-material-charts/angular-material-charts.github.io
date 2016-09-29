@@ -1,0 +1,96 @@
+<md-dialog class="al-dialog" flex-xs="100" flex-gt-xs="50" aria-label="Mango" ng-cloak>
+    <form ng-submit="rc.register()" name="registerForm" >
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>REGISTRATION FORM</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="rc.closeDialog()" aria-label="clear">
+                <ng-md-icon aria-label="clear" icon="clear" style="fill : white"></ng-md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+
+    <md-dialog-content layout="column" layout-align="start none">
+        <md-input-container>
+            <label>Full Name</label>
+            <input type="text" name="fullname" md-maxlength="50" required ng-model="rc.user.name">
+            <div ng-messages="registerForm.fullname.$error">
+                <div ng-message="required">This is required.</div>
+                <div ng-message="md-maxlength">The name has to be less than 50 characters long.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container>
+            <label>Email Id</label>
+            <input required name="email" type="email" ng-model="rc.user.email">
+            <div ng-messages="registerForm.email.$error" >
+                <div ng-message="required">This is required.</div>
+                <div ng-message="email">Invalid e-mail address.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container>
+            <label>Mobile Number</label>
+            <input required name="mobileno" type="text" ng-pattern="/^[0-9]{10,10}$/" ng-model="rc.user.mobileno">
+            <div ng-messages="registerForm.mobileno.$error" >
+                <div ng-message="required">This is required.</div>
+                <div ng-message="pattern">Invalid mobile number.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container>
+            <label>Password</label>
+            <input required minlength="6" type="password" name="password" ng-model="rc.user.password">
+            <div ng-messages="registerForm.password.$error">
+                <div ng-message="required">This is required.</div>
+                <div ng-message="minlength">Password must be atleast 6 characters long.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container>
+            <label>Confirm Password</label>
+            <input type="password" required minlength="6" match="rc.user.password" name="confirmPassword" ng-model="rc.user.confirmpwd">
+            <div ng-messages="registerForm.confirmPassword.$error">
+                <div ng-message="required">This is required.</div>
+                <div ng-message="minlength">Password must be atleast 6 characters long.</div>
+                <div ng-message="match">Passwords must match</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container layout="row" layout-align="none center">
+            <p>
+                Join As :
+            </p>
+            <md-radio-group flex-offset="5" ng-model="rc.userJoin" layout="row">
+                <md-radio-button value="customer" class="md-primary">Customer</md-radio-button>
+                <md-radio-button value="reseller" class="md-primary"> Reseller </md-radio-button>
+            </md-radio-group>
+        </md-input-container>
+
+        <md-input-container ng-if="rc.userJoin == 'reseller'">
+            <label>Address</label>
+            <input required minlength="20" type="text" name="address" ng-model="rc.user.address">
+            <div ng-messages="registerForm.address.$error">
+                <div ng-message="required">This is required.</div>
+                <div ng-message="minlength">Address must be atleast 20 characters long.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container ng-if="rc.userJoin == 'reseller'">
+            <label>Page Url</label>
+            <input required type="url" name="pageUrl" ng-model="rc.user.resellerPage">
+            <div ng-messages="registerForm.pageUrl.$error">
+                <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+
+        <div class="padding-top-2" layout="row" layout-align="center">
+            <md-button ng-disabled="registerForm.$invalid" type="submit" class="md-raised md-primary" aria-label="description">
+                <b>Register</b>
+            </md-button>
+        </div>
+    </md-dialog-content>
+    </form>
+</md-dialog>

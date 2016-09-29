@@ -1,0 +1,181 @@
+<div class="margin-tb-2 padding-tb-3 padding-lr-2 page" md-whiteframe="5" ng-controller="AddProductController as apc">
+    <h2>Add Product</h2>
+
+    <form name="addProductForm" class="al-add-product-page margin-top-2" layout-gt-xs="row" layout-xs="column" layout-wrap>
+        <div layout="column" layout-wrap layout-align-gt-xs="start start" flex-gt-xs="40" flex-xs="100">
+            <div class="image-upload" layout-wrap layout="row">
+                <input name="productImage" type="file" required hide-gt-xs hide-xs ng-model="apc.productImage">
+                <div flex ngf-drop ngf-select ng-model="apc.productImage"
+                   ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true"
+                   accept="image/*"  ngf-resize="{width: 300, height: 360, centerCrop: true, restoreExif: false}" ngf-pattern="'image/*'" layout="row" layout-align="center center" layout-wrap>
+                        <span flex="60" ng-show="!apc.productImage" hide-xs show-gt-xs>Drag-Drop or Click to upload product image</span>
+                        <span flex="80" ng-show="!apc.productImage" hide-gt-xs show-xs>Click to upload product image</span>
+                        <img class="image-preview" ngf-thumbnail="apc.productImage" alt="" />
+                </div>
+                <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+                <div ng-if="apc.productImage" class="onHover">
+                    <div class="detail" layout="row" layout-align="center center">
+                        <span flex="60" hide-xs show-gt-xs>Drag-Drop or Click to change product image</span>
+                        <span flex="100" hide-gt-xs show-xs>Click to change product image</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div layout="column" flex-gt-xs="60" flex-xs="100">
+
+
+            <md-input-container>
+                <label>Name</label>
+                <input type="text" name="name" md-maxlength="50" required ng-model="apc.product.name">
+                <div ng-messages="addProductForm.name.$error">
+                    <div ng-message="required">This is required.</div>
+                    <div ng-message="md-maxlength">The name has to be less than 50 characters long.</div>
+                </div>
+            </md-input-container>
+            <div layout="row" layout-align="space-between" layout-wrap>
+                <md-input-container flex-gt-xs="30">
+                    <label>Reseller Cost</label>
+                    <input required name="resellerCost" type="text" ng-model="apc.product.cost.reseller">
+                    <div ng-messages="addProductForm.resellerCost.$error" >
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex-gt-xs="30">
+                    <label>Customer Cost</label>
+                    <input required name="customerCost" type="text" ng-model="apc.product.cost.customer">
+                    <div ng-messages="addProductForm.customerCost.$error" >
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex-gt-xs="30">
+                    <label>Dealer Cost</label>
+                    <input required name="dealerCost" type="text" ng-model="apc.product.cost.dealer">
+                    <div ng-messages="addProductForm.dealerCost.$error" >
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row" class="baseline-md" layout-wrap layout-align="space-between center">
+                <p flex-xs="30" flex="15" class="text-capitalize margin-right-2">
+                    Category :
+                </p>
+
+                <md-input-container flex-xs="60" flex="30">
+                    <label>Choose Category</label>
+                    <md-select ng-model="apc.product.category">
+                        <md-option class="text-capitalize" ng-repeat="category in apc.categories"><span > {{category | replaceUnderscore}}</span></md-option>
+                    </md-select>
+                </md-input-container>
+
+                <p class="margin-lr-2">
+                    Or
+                </p>
+
+                <md-input-container flex-xs="60" flex="30" class="without-errorspace">
+                    <label>Add Category</label>
+                    <input type="text" ng-model="apc.category" ng-keyup="apc.addCategoryByEnter($event)">
+                </md-input-container>
+
+                <div flex-gt-xs="10" layout="row" layout-align="center center">
+                    <md-button  class="md-raised md-primary md-icon-button md-mini" aria-label="description" md-no-ink="true" ng-click="apc.addCategory()">
+                        <ng-md-icon icon="add" style="fill:white" size="24"></ng-md-icon>
+                    </md-button>
+                </div>
+            </div>
+            <div layout="row" class="baseline-md margin-top-1" layout-wrap layout-align="space-between center">
+                <p flex-xs="30" flex="15" class="text-capitalize margin-right-2">
+                    Brand :
+                </p>
+
+                <md-input-container flex-xs="60" flex="30">
+                    <label>Choose Brand</label>
+                    <md-select ng-model="apc.product.brand">
+                        <md-option class="text-capitalize" ng-repeat="brand in apc.brands"><span > {{brand | replaceUnderscore}}</span></md-option>
+                    </md-select>
+                </md-input-container>
+
+                <p class="margin-lr-2">
+                    Or
+                </p>
+
+                <md-input-container flex-xs="60" flex="30" class="without-errorspace">
+                    <label>Add Brand</label>
+                    <input type="text" ng-model="apc.brand" ng-keyup="apc.addBrandByEnter($event)">
+                </md-input-container>
+
+                <div flex-gt-xs="10" layout="row" layout-align="center center">
+                    <md-button  class="md-raised md-primary md-icon-button md-mini" aria-label="description" md-no-ink="true" ng-click="apc.addBrand()">
+                        <ng-md-icon icon="add" style="fill:white" size="24"></ng-md-icon>
+                    </md-button>
+                </div>
+            </div>
+
+            <md-input-container class="margin-top-3">
+                <label>Description</label>
+                <textarea type="text" ng-model="apc.product.description"></textarea>
+            </md-input-container>
+
+
+
+        </div>
+        <div flex-gt-xs="60" class="margin-top-2" flex-xs="100" layout="column" layout-wrap layout-align="none none">
+            <p>
+                Features :
+            </p>
+
+            <div layout="row" class="feature-row" layout-align="none center" layout-wrap ng-repeat="feature in apc.features">
+                <p flex-gt-xs="50" flex-xs="25">
+                    <b>{{feature.name}} :</b> {{feature.value}}
+                </p>
+
+                <md-button class="md-raised md-mini md-primary md-hue-2 text-capitalize" aria-label="description" md-no-ink="true">Add Filter Options</md-button>
+
+                <div flex-gt-xs="10" layout="row" layout-align="center center">
+                    <md-button class="md-raised md-warn md-icon-button md-mini" aria-label="description" md-no-ink="true" ng-click="apc.featureRemove(feature)">
+                        <ng-md-icon icon="remove" size="20" style="fill : white"></ng-md-icon>
+                    </md-button>
+                </div>
+            </div>
+            <div layout="row" class="margin-top-1" layout-align="space-between center" layout-wrap>
+                <p>
+                    Add Feature :
+                </p>
+
+                <md-input-container flex-gt-xs="30">
+                    <label>Feature Name</label>
+                    <input name="featureName" type="text" ng-model="apc.feature.name">
+
+                </md-input-container>
+
+                <md-input-container flex-gt-xs="30">
+                    <label>Feature Value</label>
+                    <input name="featureValue" ng-keyup="apc.featureAddByEnter($event)" type="text" ng-model="apc.feature.value">
+                    <!-- <div ng-messages="addProductForm.customerCost.$error" >
+                        <div ng-message="required">This is required.</div>
+                    </div> -->
+                </md-input-container>
+
+                <!-- <md-input-container flex-gt-xs="30">
+                    <label>Dealer Cost</label>
+                    <input required name="dealerCost" type="text" ng-model="apc.product.cost.dealer">
+                    <div ng-messages="addProductForm.dealerCost.$error" >
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container> -->
+                <div flex-gt-xs="10" layout="row" layout-align="center center">
+                    <md-button class="md-raised md-primary md-icon-button md-mini" aria-label="description" md-no-ink="true" ng-click="apc.featureAdd()">
+                        <ng-md-icon icon="add" style="fill:white" size="24"></ng-md-icon>
+                    </md-button>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+
+
+</div>
